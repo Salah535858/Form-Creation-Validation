@@ -45,3 +45,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// Define the API URL
+const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+// Function to fetch user data asynchronously
+async function fetchUserData() {
+    try {
+        // Fetch data from the API
+        const response = await fetch(apiUrl);
+        
+        // Check if the response is OK
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        // Parse the JSON response
+        const data = await response.json();
+        
+        // Log the user data to the console (you can modify this as needed)
+        console.log(data);
+        
+        // You can also return the data if needed elsewhere in your application
+        return data;
+        
+    } catch (error) {
+        // Handle errors
+        console.error('There was a problem fetching the data:', error);
+    }
+}
+
+// Call the function to fetch user data
+fetchUserData();
